@@ -22,7 +22,8 @@ const FAQ = () => {
                 ? "detai-FAQ active"
                 : "detai-FAQ"
               }  onClick={() => {setActive("ทั่วไป") 
-                setDetailText("นี้คือข้อมูลสินค้า")}}>ทั่วไป</p>
+                setDetailText("นี้คือข้อมูลสินค้า Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis assumenda corrupti ipsum. Dicta similique obcaecati et, delectus praesentium corrupti repudiandae.")}}>ทั่วไป</p>
+                
             </div>
 
             <div className="FAQ-2">
@@ -30,7 +31,7 @@ const FAQ = () => {
                 ? "detai-FAQ active"
                 : "detai-FAQ"
               }  onClick={() => {setActive("ข้อมูลสินค้า") 
-                setDetailText("นี้คือลายละเอียด")}}>ข้อมูลสินค้า</p>
+                setDetailText("นี้คือลายละเอียด Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum consequuntur inventore voluptates quisquam dolore temporibus, sunt praesentium explicabo porro commodi!")}}>ข้อมูลสินค้า</p>
             </div>
           </div>
           <br />
