@@ -169,3 +169,8 @@ h1,h2,h3,h4,h5,h6{
 .detai-FAQ.active{
     font-weight: bold;
 }
+
+.BOX-FAQ-TAG{
+    width: 400px;
+    height: 400px;
+}

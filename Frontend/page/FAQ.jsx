@@ -35,7 +35,11 @@ const FAQ = () => {
             </div>
           </div>
           <br />
-          <p>{detailText}</p>
+          <br />
+          <div className="BOX-FAQ-TAG">
+            <p>{detailText}</p>
+          </div>
+          
 
         </div>
         
