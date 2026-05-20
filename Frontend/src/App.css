@@ -124,6 +124,7 @@ h1,h2,h3,h4,h5,h6{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 120px;
 }
 
 .mainFAQ-Wrapper{
@@ -173,4 +174,28 @@ h1,h2,h3,h4,h5,h6{
 .BOX-FAQ-TAG{
     width: 400px;
     height: 400px;
+}
+
+.Box-faq-1{
+    border: 2px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+    
+
+}
+
+
+.Box-faq-2{
+    border: 2px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+}
+
+
+.map-container{
+    justify-content: center;
+    align-items: center;
+    text-align: center
 }
