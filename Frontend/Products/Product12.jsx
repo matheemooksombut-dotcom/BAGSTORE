@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar"
 import Product from "../components/Product";
 import products from "../data/products";
 import { Link } from "react-router-dom"
-const Product1 = () => {
+const Product12 = () => {
      const product = products.find(
         item => item.id === 12
     );
@@ -22,11 +22,11 @@ const Product1 = () => {
 
 
                 <div className="Product-menu-2">
-                   
-                    <b><p className="style-gap">|</p> </b>
-                    <Link to = "/Product12" className="stylenone">
-                    <b><p className="font-gap"> ถัดไป</p></b>
+                     <Link to ="/Product11" className="stylenone">
+                        <b><p className="font-gap">ก่อนหน้า </p> </b>
                     </Link>
+                    <b><p className="style-gap">|</p> </b>
+                   
                 </div>
             </div>
 
@@ -40,7 +40,7 @@ const Product1 = () => {
                         <h2>{product.name}</h2>
                         <br />
                         <p>
-                            SKU: 001
+                            SKU: 0012
                         </p>
                         <br />
                         <b><p>$ 300.00</p></b>
@@ -82,4 +82,4 @@ const Product1 = () => {
   )
 }
 
-export default Product1
+export default Product12
