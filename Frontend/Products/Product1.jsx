@@ -58,7 +58,8 @@ const Product1 = () => {
                         </div>
                         <br />
                         <button className="add-to-cart">เพิ่มลงรถเข็น</button>
-                        
+                        <br />
+                        <button className="btn-buy">ซื้อเลย</button>
                       
 
 
