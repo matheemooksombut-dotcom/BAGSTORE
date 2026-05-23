@@ -4,7 +4,7 @@ import products from "../data/products";
 import { Link } from "react-router-dom"
 const Product1 = () => {
      const product = products.find(
-        item => item.id === 1
+        item => item.id === 11
     );
 
   return (
@@ -24,7 +24,7 @@ const Product1 = () => {
                 <div className="Product-menu-2">
                    
                     <b><p className="style-gap">|</p> </b>
-                    <Link to = "/Product2" className="stylenone">
+                    <Link to = "/Product11" className="stylenone">
                     <b><p className="font-gap"> ถัดไป</p></b>
                     </Link>
                 </div>
@@ -33,7 +33,7 @@ const Product1 = () => {
             <div className="Incontent-product">
 
                 <div className="Product-1-pic">
-                    <Product id={1}/>
+                    <Product id={11}/>
                 </div>
                 <div className="info-wrapper">
                     <div className="Info-Product">
