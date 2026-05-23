@@ -3,8 +3,6 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom"
 import { useState } from "react"
 
-
-
 const FAQ = () => {
   const [detailText , setDetailText] = useState("");
   const [detailText2 , setDetailText2] = useState("");
@@ -70,7 +68,7 @@ const FAQ = () => {
           
           <br />
           <br />
-          
+        
           
           
           
@@ -83,6 +81,7 @@ const FAQ = () => {
       
       <div className="map-container">
         <h2>MAP</h2>
+        <br />
         <br />
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158857.83988672637!2d-0.2664034848794909!3d51.528739805029666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sth!4v1779286840421!5m2!1sen!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"

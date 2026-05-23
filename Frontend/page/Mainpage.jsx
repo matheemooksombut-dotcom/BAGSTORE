@@ -2,7 +2,7 @@ import '../src/App.css'
 import Navbar from "../components/Navbar";
 import Footer from '../components/Footer';
 import Product from '../components/Product';
-
+import { Link } from "react-router-dom";
 
 export const Mainpage = () => {
   
@@ -12,9 +12,11 @@ export const Mainpage = () => {
           <div id='ShowAllProduct' className="Items">
 
           <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={1}  />
-             </div>
+            <Link to = "/Product1">
+              <div className="Pic-Items">
+                <Product id={1}  />
+              </div>
+            </Link>
              <br />
             <p>Product 1</p>
             <br />
@@ -35,7 +37,7 @@ export const Mainpage = () => {
             <br />
             <div className="mini-line"></div>
             <br />
-            <p>300$</p>
+            <p>฿ 300</p>
            <br />
             <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
           </div>
@@ -43,7 +45,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={3} />
-              <img src="../public/bag3.png" alt="" />
              </div>
              <br />
             <p>Product 3</p>
@@ -58,7 +59,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={4} />
-              <img src="../public/bag4.png" alt="" />
              </div>
              <br />
             <p>Product 4</p>
@@ -73,7 +73,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={5} />
-              <img src="../public/bag5.png" alt="" />
              </div>
              <br />
             <p>Product 5</p>
@@ -88,7 +87,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={6} />
-              <img src="../public/bag6.png" alt="" />
              </div>
              <br />
             <p>Product 6</p>
@@ -102,7 +100,6 @@ export const Mainpage = () => {
 
           <div className="Itme"><div className="Pic-Items">
             <Product id={7} />
-              <img src="../public/bag7.png" alt="" />
              </div>
              <br />
             <p>Product 7</p>
@@ -116,7 +113,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={8} />
-              <img src="../public/bag8.png" alt="" />
              </div>
              <br />
             <p>Product 8</p>
@@ -132,7 +128,6 @@ export const Mainpage = () => {
            <div className="Itme">
             <div className="Pic-Items">
               <Product id={9} />
-              <img src="../public/bag8.png" alt="" />
              </div>
              <br />
             <p>Product 9</p>
@@ -149,7 +144,6 @@ export const Mainpage = () => {
            <div className="Itme">
             <div className="Pic-Items">
               <Product id={10} />
-              <img src="../public/bag8.png" alt="" />
              </div>
              <br />
             <p>Product 10</p>
@@ -165,7 +159,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={11} />
-              <img src="../public/bag8.png" alt="" />
              </div>
              <br />
             <p>Product 11</p>
@@ -181,7 +174,6 @@ export const Mainpage = () => {
           <div className="Itme">
             <div className="Pic-Items">
               <Product id={12} />
-              <img src="../public/bag8.png" alt="" />
              </div>
              <br />
             <p>Product 12</p>

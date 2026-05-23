@@ -9,13 +9,13 @@ const Navbar = () => {
           </div>
         
             <ul className="menu">
-              <li><Link to="/" className="stylenone"><p onClick={()=>{
+              <li><Link to="/" className="stylenone"><b><p onClick={()=>{
                 document.getElementById("ShowAllProduct").scrollIntoView({behavior: "smooth"})
-              }}>เลือกซื้อ</p></Link></li>
-              <li><Link to="/" className="stylenone"><p onClick={()=>{
+              }}>เลือกซื้อ</p></b></Link></li>
+              <li><Link to="/" className="stylenone"><b><p onClick={()=>{
                 document.getElementById("aboutus").scrollIntoView({behavior: "smooth"})
-              }}>เกี่ยวกับเรา</p></Link></li>
-              <li><Link to="/FAQ" className="stylenone"><p>FAQ</p></Link></li>
+              }}>เกี่ยวกับเรา</p></b></Link></li>
+              <li><Link to="/FAQ" className="stylenone"><b><p>FAQ</p></b></Link></li>
               <li><p>ติดต่อเรา</p></li>
             </ul>
        
