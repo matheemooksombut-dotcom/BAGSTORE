@@ -1,11 +1,14 @@
 import Navbar from "../components/Navbar"
 import Product from "../components/Product";
 import products from "../data/products";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useState } from 'react';
+
 const Product1 = () => {
      const product = products.find(
         item => item.id === 1
     );
+     const [countitem , setCountItem] = useState(1);
 
   return (
     <>
@@ -32,7 +35,7 @@ const Product1 = () => {
 
             <div className="Incontent-product">
 
-                <div className="Product-1-pic">
+                <div className="Product-pic-full">
                     <Product id={1}/>
                 </div>
                 <div className="info-wrapper">
@@ -48,16 +51,33 @@ const Product1 = () => {
                         <b><p>สี :</p></b>
                         <br />
                         <div className="color-wrapper">
-                            <span className="Orage"></span>
-                            <span className="Pink"></span>
+                                {product.colors.map((color,index)=>(
+
+                                <span
+                                    key={index}
+                                    className="color-box"
+                                    style={{
+                                        backgroundColor:color
+                                    }}
+                                ></span>
+
+                              ))}
                         </div>
                         <br />
                         <b><p>จำนวน :</p> </b>
                         <br />
                         <div className="eqt-box">
-                            <button className="btn-count">-</button>
-                            <input className="eqt-input" type="number" readOnly min={1} value={1} max={99}  />
-                            <button className="btn-count">+</button>
+                             <button className="btn-count" onClick={()=>{
+                                if(countitem > 1){
+                                setCountItem(countitem - 1)
+                                }
+                            }}>-</button>
+                            <input className="eqt-input" type="number" readOnly  value={countitem}  />
+                            <button className="btn-count" onClick={()=>{
+                                if(countitem < 99){
+                                setCountItem(countitem + 1)
+                                }
+                            }}>+</button>
                             
                         </div>
                         <br />

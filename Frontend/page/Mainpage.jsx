@@ -3,196 +3,153 @@ import Navbar from "../components/Navbar";
 import Footer from '../components/Footer';
 import Product from '../components/Product';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+import products from '../data/products';
 
 export const Mainpage = () => {
+ const [show , setShow] = useState(false);
+ const [selectedProduct , setSelectedProduct] = useState(null);
+ const [countitem , setCountItem] = useState(1);
+ const handleClose = ()=>{
+    setShow(false);
+    setCountItem(1);
+}
   
+     const handleOpen = (id)=>{
+        const product = products.find(item=>item.id === id);
+
+        setSelectedProduct(product);
+        setShow(true);
+    } 
+
   return (
     <>
         <Navbar/>
           <div id='ShowAllProduct' className="Items">
 
-          <div className="Itme">
-            <Link to = "/Product1">
-              <div className="Pic-Items">
-                <Product id={1}  />
-              </div>
-            </Link>
-             <br />
-            <p>Product 1</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-           
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+        {products.map((item)=>(
+                <div className="Itme" key={item.id}>
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={2} />
-             </div>
-             <br />
-            <p>Product 2</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-           <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <Link to={`/Product${item.id}`}>
+                        <div className="Pic-Items">
+                            <Product id={item.id}/>
+                        </div>
+                    </Link>
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={3} />
-             </div>
-             <br />
-            <p>Product 3</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-           <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <br/>
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={4} />
-             </div>
-             <br />
-            <p>Product 4</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-           <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <p>{item.name}</p>
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={5} />
-             </div>
-             <br />
-            <p>Product 5</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <br/>
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={6} />
-             </div>
-             <br />
-            <p>Product 6</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <div className="mini-line"></div>
 
-          <div className="Itme"><div className="Pic-Items">
-            <Product id={7} />
-             </div>
-             <br />
-            <p>Product 7</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button></div>
-          
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={8} />
-             </div>
-             <br />
-            <p>Product 8</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <br/>
+
+                    <p>฿ {item.price}</p>
+
+                    <br/>
+
+                    <button
+                        className="btn-add-tocart"
+                        onClick={()=>handleOpen(item.id)}
+                    >
+                        เพิ่มลงรถเข็น
+                    </button>
+
+                </div>
+            ))}
+
+        </div>
 
 
-           <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={9} />
-             </div>
-             <br />
-            <p>Product 9</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+        {show && selectedProduct && (
 
+            <div
+                className="overlay"
+                onClick={handleClose}
+            >
 
+                <div
+                    className="overlay-wrapper"
+                    onClick={(e)=>e.stopPropagation()}
+                >
 
-           <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={10} />
-             </div>
-             <br />
-            <p>Product 10</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                    <div className="Pic-Items">
+                        <Product id={selectedProduct.id}/>
+                    </div>
 
+                    <div className="Inside-Content-Wrapper">
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={11} />
-             </div>
-             <br />
-            <p>Product 11</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                        <div className="Content-overlay">
 
+                            <h2>
+                                {selectedProduct.name}
+                            </h2>
 
-          <div className="Itme">
-            <div className="Pic-Items">
-              <Product id={12} />
-             </div>
-             <br />
-            <p>Product 12</p>
-            <br />
-            <div className="mini-line"></div>
-            <br />
-            <p>฿ 300</p>
-            <br />
-            <button className="btn-add-tocart">เพิ่มลงรถเข็น</button>
-          </div>
+                            <br/>
 
-      </div>
-      
+                            <p>SKU: {selectedProduct.id}</p>
+
+                            <br/>
+
+                            <b>
+                                <p>฿ {selectedProduct.price}</p>
+                            </b>
+
+                            <br/>
+
+                              <div className="color-wrapper">
+                                {selectedProduct.colors.map((color,index)=>(
+
+                                <span
+                                    key={index}
+                                    className="color-box"
+                                    style={{
+                                        backgroundColor:color
+                                    }}
+                                ></span>
+
+                              ))}
+                            </div>
+                        <br />
+
+                          <div className="eqt-box">
+                            <button className="btn-count" onClick={()=>{
+                                if(countitem > 1){
+                                setCountItem(countitem - 1)
+                                }
+                            }}>-</button>
+                            <input className="eqt-input" type="number" readOnly  value={countitem}  />
+                            <button className="btn-count" onClick={()=>{
+                                if(countitem < 99){
+                                setCountItem(countitem + 1)
+                                }
+                            }}>+</button>
+                            
+                          </div>
+                          <br />
+
+                            <button className="add-to-cart">
+                                เพิ่มลงรถเข็น
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        )}
+
         <div id='aboutus'>
             <Footer/>
         </div>
+
     </>
   )
 }
 
-
-export default Mainpage;
+export default Mainpage

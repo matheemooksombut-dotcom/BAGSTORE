@@ -17,6 +17,7 @@ const Navbar = () => {
               }}>เกี่ยวกับเรา</p></b></Link></li>
               <li><Link to="/FAQ" className="stylenone"><b><p>FAQ</p></b></Link></li>
               <li><p>ติดต่อเรา</p></li>
+              <i class="fa-solid fa-cart-arrow-down">({})</i>
             </ul>
        
       </div>
