@@ -13,16 +13,21 @@ import Product9 from "../Products/Product9"
 import Product10 from "../Products/Product10"
 import Product11 from "../Products/Product11"
 import Product12 from "../Products/Product12"
+import Navbar from "../components/Navbar"
+
 import {  Routes, Route } from "react-router-dom"
 
  
 function App() {
   
-
+  
   return (
-   
+    <>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Mainpage/>}  />
+         
+        <Route path="/" element={<Mainpage/>}/>
+        
         <Route path="/FAQ" element={<FAQ/>}  />
         <Route path="/Product1" element={<Product1/>}  />
         <Route path="/Product2" element={<Product2/>}  />
@@ -37,7 +42,7 @@ function App() {
         <Route path="/Product11" element={<Product11/>}  />
         <Route path="/Product12" element={<Product12/>}  />
       </Routes>
-    
+  </> 
   )
 }
 

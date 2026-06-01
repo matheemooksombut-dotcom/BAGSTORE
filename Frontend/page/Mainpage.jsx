@@ -1,12 +1,13 @@
 import '../src/App.css'
-import Navbar from "../components/Navbar";
+import { useCart } from '../src/context/UseCart';
 import Footer from '../components/Footer';
-
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import products from '../data/products';
 
+
 export const Mainpage = () => {
+const { setCartCount } = useCart();
  const [show , setShow] = useState(false);
  const [selectedProduct , setSelectedProduct] = useState(null);
  const [countitem , setCountItem] = useState(1);
@@ -33,7 +34,7 @@ export const Mainpage = () => {
 const [selectedImage, setSelectedImage] = useState(null);
   return (
     <>
-        <Navbar/>
+     
           <div id='ShowAllProduct' className="Items">
 
         {products.map((item)=>(
@@ -159,7 +160,11 @@ const [selectedImage, setSelectedImage] = useState(null);
                           </div>
                           <br />
 
-                            <button className="add-to-cart">
+                            <button className="add-to-cart" onClick={()=>{
+                                        setCartCount(
+                                            prev => prev + countitem
+                                        );
+                                        }}>
                                 เพิ่มลงรถเข็น
                             </button>
 

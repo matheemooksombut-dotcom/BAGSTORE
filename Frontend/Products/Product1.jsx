@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+
 
 import products from "../data/products";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const Product1 = () => {
 
   return (
     <>
-        <Navbar/>
+        
         <div className="Product-Wrapper">
             <div className="Product-nav"> 
                 <div className="Product-menu-1 ">

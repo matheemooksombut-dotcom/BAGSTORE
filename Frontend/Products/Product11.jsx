@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+
 import Product from "../components/Product";
 import products from "../data/products";
 import { Link } from "react-router-dom"
@@ -10,7 +10,7 @@ const Product11 = () => {
     const [countitem , setCountItem] = useState(1);
   return (
     <>
-        <Navbar/>
+       
         <div className="Product-Wrapper">
             <div className="Product-nav"> 
                 <div className="Product-menu-1 ">

@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+
 import Product from "../components/Product";
 import products from "../data/products";
 import { Link } from "react-router-dom"
