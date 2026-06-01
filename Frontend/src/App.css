@@ -86,12 +86,33 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .Pic-Items{
-    width: 250px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   position: relative;
     overflow: hidden;
+}
+.Pic-Items{
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image{
+    width: 100%;
+    transition: 0.3s;
+}
+
+.hover-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+}
+
+.Pic-Items:hover .hover-image{
+    opacity: 1;
+}
+
+.Pic-Items:hover .main-image{
+    opacity: 0;
 }
 
 .Pic-Items img{

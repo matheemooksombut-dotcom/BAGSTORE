@@ -1,7 +1,7 @@
 import '../src/App.css'
 import Navbar from "../components/Navbar";
 import Footer from '../components/Footer';
-import Product from '../components/Product';
+
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import products from '../data/products';
@@ -10,18 +10,27 @@ export const Mainpage = () => {
  const [show , setShow] = useState(false);
  const [selectedProduct , setSelectedProduct] = useState(null);
  const [countitem , setCountItem] = useState(1);
+ 
  const handleClose = ()=>{
     setShow(false);
     setCountItem(1);
 }
   
-     const handleOpen = (id)=>{
-        const product = products.find(item=>item.id === id);
+   const handleOpen = (id)=>{
+    const product = products.find(
+        item => item.id === id
+    );
 
-        setSelectedProduct(product);
-        setShow(true);
-    } 
+    setSelectedProduct(product);
 
+    setSelectedImage(
+        product.variants[0].image
+    );
+
+    setShow(true);
+}
+
+const [selectedImage, setSelectedImage] = useState(null);
   return (
     <>
         <Navbar/>
@@ -32,7 +41,16 @@ export const Mainpage = () => {
 
                     <Link to={`/Product${item.id}`}>
                         <div className="Pic-Items">
-                            <Product id={item.id}/>
+                        <img
+                        src={item.variants?.[0]?.image}
+                        alt={item.name}
+                        className="product-image"
+                    />
+                    <img
+                        src={item.hoverImage}
+                        alt={item.name}
+                        className="product-image hover-image"
+                    />
                         </div>
                     </Link>
 
@@ -76,7 +94,13 @@ export const Mainpage = () => {
                 >
 
                     <div className="Pic-Items">
-                        <Product id={selectedProduct.id}/>
+                         <div className="Pic-Items">
+                       <img
+                            src={selectedImage}
+                            alt={selectedProduct.name}
+                            className="product-image"
+                        />
+                        </div>
                     </div>
 
                     <div className="Inside-Content-Wrapper">
@@ -100,17 +124,22 @@ export const Mainpage = () => {
                             <br/>
 
                               <div className="color-wrapper">
-                                {selectedProduct.colors.map((color,index)=>(
+                                   {selectedProduct.variants.map((variant,index)=>(
 
-                                <span
-                                    key={index}
-                                    className="color-box"
-                                    style={{
-                                        backgroundColor:color
-                                    }}
-                                ></span>
+                                    <span
+                                        key={index}
+                                        className="color-box"
+                                        style={{
+                                            backgroundColor: variant.color
+                                        }}
+                                        onClick={()=>{
+                                            setSelectedImage(
+                                                variant.image
+                                            );
+                                        }}
+                                    />
 
-                              ))}
+                                    ))}
                             </div>
                         <br />
 

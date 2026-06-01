@@ -8,6 +8,9 @@ const Product2 = () => {
         item => item.id === 2
     );
     const [countitem , setCountItem] = useState(1);
+     const [selectedImage, setSelectedImage] = useState(
+    product.variants[0].image
+);
 
   return (
     <>
@@ -37,7 +40,11 @@ const Product2 = () => {
             <div className="Incontent-product">
 
                 <div className="Product-pic-full">
-                    <Product id={2}/>
+                     <img
+                        src={selectedImage}
+                        alt={product.name}
+                        className="product-image"
+                    />
                 </div>
                 <div className="info-wrapper">
                     <div className="Info-Product">
@@ -52,17 +59,22 @@ const Product2 = () => {
                         <b><p>สี :</p></b>
                         <br />
                          <div className="color-wrapper">
-                                {product.colors.map((color,index)=>(
+                               {product.variants.map((variant,index)=>(
 
-                                <span
+                                    <span
                                     key={index}
                                     className="color-box"
                                     style={{
-                                        backgroundColor:color
+                                        backgroundColor: variant.color
                                     }}
-                                ></span>
+                                    onClick={()=>{
+                                        setSelectedImage(
+                                        variant.image
+                                        );
+                                    }}
+                                    />
 
-                              ))}
+                                ))}
                             </div>
                         <br />
                         <b><p>จำนวน :</p> </b>
