@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import { useCart } from "../src/context/UseCart";
+import { useState } from "react";
 // import { useCart } from "../src/context/CartContext";
 
 const Navbar = () => {
-  const { cartCount } = useCart();
+  const { cartCount } = useCart(); 
   return (
     <>
       <div className="navbar">
@@ -21,7 +22,7 @@ const Navbar = () => {
               }}>เกี่ยวกับเรา</p></b></Link></li>
               <li><Link to="/FAQ" className="stylenone"><b><p>FAQ</p></b></Link></li>
               <li><p>ติดต่อเรา</p></li>
-              <i class="fa-solid fa-cart-arrow-down">({cartCount})</i>
+              <i onClick={{}} class="fa-solid fa-cart-arrow-down">({cartCount})</i>
             </ul>
        
       </div>
