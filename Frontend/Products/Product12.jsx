@@ -1,12 +1,14 @@
 
 import Product from "../components/Product";
 import products from "../data/products";
+import { useCart } from '../src/context/UseCart';
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 const Product12 = () => {
      const product = products.find(
         item => item.id === 12
     );
+    const { setCartCount } = useCart();
   const [countitem , setCountItem] = useState(1);
   return (
     <>
@@ -79,7 +81,11 @@ const Product12 = () => {
                             
                         </div>
                         <br />
-                        <button className="add-to-cart">เพิ่มลงรถเข็น</button>
+                        <button className="add-to-cart"onClick={()=>{
+                                        setCartCount(
+                                            prev => prev + countitem
+                                        );
+                                        }}>เพิ่มลงรถเข็น</button>
                         <br />
                         <button className="btn-buy">ซื้อเลย</button>
                       

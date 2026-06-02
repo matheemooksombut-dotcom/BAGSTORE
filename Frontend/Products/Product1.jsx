@@ -2,6 +2,7 @@
 
 import products from "../data/products";
 import { Link } from "react-router-dom";
+import { useCart } from '../src/context/UseCart';
 import { useState } from 'react';
 
 
@@ -9,6 +10,7 @@ const Product1 = () => {
      const product = products.find(
         item => item.id === 1
     );
+    const { setCartCount } = useCart();
      const [countitem , setCountItem] = useState(1);
      const [selectedImage, setSelectedImage] = useState(
     product.variants[0].image
@@ -94,7 +96,11 @@ const Product1 = () => {
                             
                         </div>
                         <br />
-                        <button className="add-to-cart">เพิ่มลงรถเข็น</button>
+                        <button className="add-to-cart"onClick={()=>{
+                                        setCartCount(
+                                            prev => prev + countitem
+                                        );
+                                        }}>เพิ่มลงรถเข็น</button>
                         <br />
                         <button className="btn-buy">ซื้อเลย</button>
                       
