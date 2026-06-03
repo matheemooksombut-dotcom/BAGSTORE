@@ -4,7 +4,12 @@ import { useState } from "react";
 // import { useCart } from "../src/context/CartContext";
 
 const Navbar = () => {
-  const { cartCount } = useCart(); 
+  
+const {
+    cartCount,
+    cartItems
+} = useCart();
+  const [show , setShow] = useState(false);
   return (
     <>
       <div className="navbar">
@@ -22,13 +27,71 @@ const Navbar = () => {
               }}>เกี่ยวกับเรา</p></b></Link></li>
               <li><Link to="/FAQ" className="stylenone"><b><p>FAQ</p></b></Link></li>
               <li><p>ติดต่อเรา</p></li>
-              <i onClick={{}} class="fa-solid fa-cart-arrow-down">({cartCount})</i>
+              <i
+              onClick={() => setShow(true)}
+              className="fa-solid fa-cart-arrow-down"
+            >
+              ({cartCount})
+            </i>
             </ul>
        
       </div>
 
     
+    {
+  show && (
+    <div
+      className="overlay"
+      onClick={() => setShow(false)}
+    >
+      <div
+        className="cart-overlay"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="Conception-Cart">
+          <h2>ตะกร้าสินค้า</h2>
+          
+        <button className="Close-btn" onClick={() => setShow(false)}>
+          X
+        </button>
+        </div>
+        
+      
+        <p>สินค้าในตะกร้า: {cartCount}</p>
+        <br />
+        {cartItems.map(item => (
+    <div
+        key={item.id}
+        className="cart-item"
+      >
+        <img
+            src={item.image}
+            alt={item.name}
+            width="80"
+        />
+      <br />
+      <br />
+
+        <h4>{item.name}</h4>
+      <br />
+      <br />
+        <p>ราคา ฿{item.price}</p>
+      <br />
+     
+        <p>จำนวน {item.quantity}</p>
+      <br />
+     
+    </div>
     
+))}
+        <button className="Buy-btn">ซื้อสินค้า</button>
+        <br />
+        <br />
+
+      </div>
+    </div>
+  )
+}
 
 
     </>

@@ -465,3 +465,56 @@ h1,h2,h3,h4,h5,h6{
     text-align: start;
 }
 
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.cart-overlay{
+  
+    width: 500px;
+    height: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+.Close-btn{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.Buy-btn{
+    background-color: rgb(18, 18, 18);
+    color: aliceblue;
+    padding: 20px;
+}
+
+.cart-item{
+    border: 3px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+
+.Conception-Cart{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-items-wrapper{
+    flex: 1;
+    overflow-y: auto;
+    margin: 20px 0;
+}

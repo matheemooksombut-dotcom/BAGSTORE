@@ -7,7 +7,10 @@ import products from '../data/products';
 
 
 export const Mainpage = () => {
-const { setCartCount } = useCart();
+const {
+    setCartCount,
+    setCartItems
+} = useCart();
  const [show , setShow] = useState(false);
  const [selectedProduct , setSelectedProduct] = useState(null);
  const [countitem , setCountItem] = useState(1);
@@ -159,12 +162,30 @@ const [selectedImage, setSelectedImage] = useState(null);
                             
                           </div>
                           <br />
+                            <button
+                                className="add-to-cart"
+                                onClick={() => {
 
-                            <button className="add-to-cart" onClick={()=>{
-                                        setCartCount(
-                                            prev => prev + countitem
-                                        );
-                                        }}>
+                                    const cartItem = {
+                                        id: selectedProduct.id,
+                                        name: selectedProduct.name,
+                                        price: selectedProduct.price,
+                                        image: selectedImage,
+                                        quantity: countitem
+                                    };
+
+                                    setCartItems(prev => [
+                                        ...prev,
+                                        cartItem
+                                    ]);
+
+                                    setCartCount(
+                                        prev => prev + countitem
+                                    );
+
+                                    handleClose();
+                                }}
+                            >
                                 เพิ่มลงรถเข็น
                             </button>
 

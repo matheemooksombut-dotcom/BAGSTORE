@@ -5,12 +5,15 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
 
     const [cartCount, setCartCount] = useState(0);
+    const [cartItems, setCartItems] = useState([]);
 
     return (
         <CartContext.Provider
             value={{
                 cartCount,
-                setCartCount
+                setCartCount,
+                cartItems,
+                setCartItems
             }}
         >
             {children}
