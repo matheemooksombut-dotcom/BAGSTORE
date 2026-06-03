@@ -7,8 +7,15 @@ const Navbar = () => {
   
 const {
     cartCount,
-    cartItems
+    cartItems,
+    
+    setCartItems
 } = useCart();
+const removeItem = (id) => {
+  setCartItems(
+    prev => prev.filter(item => item.id !== id)
+  );
+};
   const [show , setShow] = useState(false);
   return (
     <>
@@ -82,7 +89,7 @@ const {
       <br />
       <div className="Option">
         <button className="btn-buy">ซื้อสินค้า</button>
-        <button className="btn-Deleatd">ลบสินค้า</button>
+        <button className="btn-Deleatd" onClick={() => removeItem(item.id)}>ลบสินค้า</button>
       </div>
      
     </div>
