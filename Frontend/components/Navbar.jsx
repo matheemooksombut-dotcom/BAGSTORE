@@ -80,11 +80,15 @@ const {
      
         <p>จำนวน {item.quantity}</p>
       <br />
+      <div className="Option">
+        <button className="btn-buy">ซื้อสินค้า</button>
+        <button className="btn-Deleatd">ลบสินค้า</button>
+      </div>
      
     </div>
     
 ))}
-        <button className="Buy-btn">ซื้อสินค้า</button>
+        <button className="Buy-btn">ซื้อสินค้าทั้งหมด</button>
         <br />
         <br />
 

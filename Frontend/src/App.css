@@ -480,11 +480,11 @@ h1,h2,h3,h4,h5,h6{
 .cart-overlay{
   
     width: 500px;
-    height: auto;
+    max-height: 80vh;
     background: white;
     padding: 20px;
     border-radius: 10px;
-
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
 }
@@ -517,4 +517,24 @@ h1,h2,h3,h4,h5,h6{
     flex: 1;
     overflow-y: auto;
     margin: 20px 0;
+}
+
+.Option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.btn-Deleatd{
+    background-color:red;
+    color: white;
+    padding: 20px;
+}
+
+
+
+.btn-Deleatd:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
