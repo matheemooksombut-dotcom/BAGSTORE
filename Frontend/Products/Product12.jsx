@@ -12,7 +12,7 @@ const Product12 = () => {
   const [countitem , setCountItem] = useState(1);
   return (
     <>
-        <Navbar/>
+        
         <div className="Product-Wrapper">
             <div className="Product-nav"> 
                 <div className="Product-menu-1 ">

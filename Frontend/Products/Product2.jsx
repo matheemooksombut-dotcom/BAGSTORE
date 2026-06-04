@@ -4,10 +4,13 @@ import products from "../data/products";
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 const Product2 = () => {
-     const product = products.find(
-        item => item.id === 2
-    );
-    const { setCartCount } = useCart();
+    const {
+    setCartCount,
+    setCartItems
+        } = useCart();
+            const product = products.find(
+                item => item.id === 2
+            );
     const [countitem , setCountItem] = useState(1);
      const [selectedImage, setSelectedImage] = useState(
     product.variants[0].image
@@ -95,11 +98,32 @@ const Product2 = () => {
                             
                         </div>
                         <br />
-                        <button className="add-to-cart"onClick={()=>{
-                                        setCartCount(
-                                            prev => prev + countitem
-                                        );
-                                        }}>เพิ่มลงรถเข็น</button>
+                        <button
+                                className="add-to-cart"
+                                onClick={() => {
+
+                                    const cartItem = {
+                                        id: product.id,                                  
+                                        name: product.name,
+                                        price: product.price,
+                                        image: selectedImage,
+                                        quantity: countitem
+                                    };
+
+                                    setCartItems(prev => [
+                                        ...prev,
+                                        cartItem
+                                    ]);
+
+                                    setCartCount(
+                                        prev => prev + countitem
+                                    );
+
+                                    
+                                }}
+                            >
+                                เพิ่มลงรถเข็น
+                            </button>
                         <br />
                         <button className="btn-buy">ซื้อเลย</button>
                       

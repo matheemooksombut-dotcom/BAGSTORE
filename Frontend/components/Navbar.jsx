@@ -8,12 +8,21 @@ const Navbar = () => {
 const {
     cartCount,
     cartItems,
-    
+    setCartCount,
     setCartItems
 } = useCart();
 const removeItem = (id) => {
+
+  const itemToDelete = cartItems.find(
+    item => item.id === id
+  );
+
   setCartItems(
     prev => prev.filter(item => item.id !== id)
+  );
+
+  setCartCount(
+    prev => prev - itemToDelete.quantity
   );
 };
   const [show , setShow] = useState(false);

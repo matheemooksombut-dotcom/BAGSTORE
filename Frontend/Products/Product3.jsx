@@ -5,11 +5,20 @@ import products from "../data/products";
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 const Product3 = () => {
-     const product = products.find(
-        item => item.id === 3
-    );
-    const { setCartCount } = useCart();
+        const {
+    setCartCount,
+    setCartItems
+        } = useCart();
+            const product = products.find(
+                item => item.id === 3
+            );
+    
     const [countitem , setCountItem] = useState(1);
+       const [selectedImage, setSelectedImage] = useState(
+    product.variants[0].image
+);
+    
+    
   return (
     <>
        
@@ -52,19 +61,24 @@ const Product3 = () => {
                         <br />
                         <b><p>สี :</p></b>
                         <br />
-                        <div className="color-wrapper">
-                                {product.colors.map((color,index)=>(
+                         <div className="color-wrapper">
+                               {product.variants.map((variant,index)=>(
 
-                                <span
+                                    <span
                                     key={index}
                                     className="color-box"
                                     style={{
-                                        backgroundColor:color
+                                        backgroundColor: variant.color
                                     }}
-                                ></span>
+                                    onClick={()=>{
+                                        setSelectedImage(
+                                        variant.image
+                                        );
+                                    }}
+                                    />
 
-                              ))}
-                            </div>
+                                ))}
+                        </div>
                         <br />
                         <b><p>จำนวน :</p> </b>
                         <br />
@@ -83,11 +97,32 @@ const Product3 = () => {
                             
                         </div>
                         <br />
-                        <button className="add-to-cart"onClick={()=>{
-                                        setCartCount(
-                                            prev => prev + countitem
-                                        );
-                                        }}>เพิ่มลงรถเข็น</button>
+                       <button
+                                className="add-to-cart"
+                                onClick={() => {
+
+                                    const cartItem = {
+                                        id: product.id,                                  
+                                        name: product.name,
+                                        price: product.price,
+                                        image: selectedImage,
+                                        quantity: countitem
+                                    };
+
+                                    setCartItems(prev => [
+                                        ...prev,
+                                        cartItem
+                                    ]);
+
+                                    setCartCount(
+                                        prev => prev + countitem
+                                    );
+
+                                    
+                                }}
+                            >
+                                เพิ่มลงรถเข็น
+                            </button>
                         <br />
                         <button className="btn-buy">ซื้อเลย</button>
                       
