@@ -5,11 +5,20 @@ import { useCart } from '../src/context/UseCart';
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 const Product10 = () => {
-     const product = products.find(
-        item => item.id === 10
-    );
-    const { setCartCount } = useCart();
-      const [countitem , setCountItem] = useState(1);
+     const {
+    setCartCount,
+    setCartItems
+        } = useCart();
+            const product = products.find(
+                item => item.id === 10
+            );
+            
+    
+    const [countitem , setCountItem] = useState(1);
+
+     const [selectedImage, setSelectedImage] = useState(
+    product.variants[0].image
+);
   return (
     <>
       
@@ -53,17 +62,22 @@ const Product10 = () => {
                         <b><p>สี :</p></b>
                         <br />
                         <div className="color-wrapper">
-                                {product.colors.map((color,index)=>(
+                                  {product.variants.map((variant,index)=>(
 
-                                <span
+                                    <span
                                     key={index}
                                     className="color-box"
                                     style={{
-                                        backgroundColor:color
+                                        backgroundColor: variant.color
                                     }}
-                                ></span>
+                                    onClick={()=>{
+                                        setSelectedImage(
+                                        variant.image
+                                        );
+                                    }}
+                                    />
 
-                              ))}
+                                ))}
                             </div>
                         <br />
                         <b><p>จำนวน :</p> </b>
@@ -83,11 +97,32 @@ const Product10 = () => {
                             
                         </div>
                         <br />
-                        <button className="add-to-cart"onClick={()=>{
-                                        setCartCount(
-                                            prev => prev + countitem
-                                        );
-                                        }}>เพิ่มลงรถเข็น</button>
+                        <button
+                                className="add-to-cart"
+                                onClick={() => {
+
+                                    const cartItem = {
+                                        id: product.id,                                  
+                                        name: product.name,
+                                        price: product.price,
+                                        image: selectedImage,
+                                        quantity: countitem
+                                    };
+
+                                    setCartItems(prev => [
+                                        ...prev,
+                                        cartItem
+                                    ]);
+
+                                    setCartCount(
+                                        prev => prev + countitem
+                                    );
+
+                                    
+                                }}
+                            >
+                                เพิ่มลงรถเข็น
+                            </button>
                         <br />
                         <button className="btn-buy">ซื้อเลย</button>
                       

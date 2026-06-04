@@ -191,7 +191,7 @@
               colors:["yellow"] ,
                variants:[
                 {
-                            color:"yelllow",
+                            color:"yellow",
                             image:"/bag12.png"
                 },
                       
