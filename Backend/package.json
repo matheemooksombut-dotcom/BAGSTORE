@@ -14,8 +14,10 @@
   "devDependencies": {},
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "check": "node --check server.js && node --check src/app.js && node --check controllers/products.js && node --check controllers/carts.js && node --check controllers/orders.js",
+    "seed": "node scripts/seed.js",
+    "start": "node server.js",
+    "test": "node --test"
   },
   "keywords": [],
   "author": "",

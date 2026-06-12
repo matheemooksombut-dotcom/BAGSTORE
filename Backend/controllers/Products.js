@@ -1,40 +1,69 @@
-const Product  =  require('../models/Product')
+const Product = require('../models/Product');
+const asyncHandler = require('../src/utils/asyncHandler');
+const ApiError = require('../src/utils/ApiError');
 
+const getProducts = asyncHandler(async (req, res) => {
+  const filter = {};
 
+  if (req.query.includeInactive !== 'true') {
+    filter.isActive = true;
+  }
 
+  if (req.query.search) {
+    filter.name = { $regex: req.query.search, $options: 'i' };
+  }
 
+  const products = await Product.find(filter).sort({ productId: 1 });
+  res.json({ success: true, count: products.length, data: products });
+});
 
-//!  ส่งข้อมูล Product ทั้งหมดออกไปใช้งาน 
+const getProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findOne({ productId: Number(req.params.id) });
 
-const getProducts  = async (req  , res ) => {
-    try {
-        const Products =  await postMessage.find()
-        res.status(200).json(Products)
+  if (!product) {
+    throw new ApiError(404, 'Product not found');
+  }
 
-    }catch(error) {
-        res.status(404).json({message : error.message})
-    
-    }
-}
+  res.json({ success: true, data: product });
+});
 
+const createProduct = asyncHandler(async (req, res) => {
+  const product = await Product.create(req.body);
+  res.status(201).json({ success: true, data: product });
+});
 
+const updateProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findOneAndUpdate(
+    { productId: Number(req.params.id) },
+    req.body,
+    { new: true, runValidators: true },
+  );
 
-// ! เพิ่มข้อมูลลง Database 
-const CreateProduct  = async (req  , res ) => {
-    const Products = req.body
-    const NewProduct =  new Product(Products)
-    try {
-        await NewProduct.save()
-        res.status(201).json(NewProduct)
+  if (!product) {
+    throw new ApiError(404, 'Product not found');
+  }
 
-    }catch(error) {
-        res.status(409).json({message : error.message})
-    
-    }
-}
+  res.json({ success: true, data: product });
+});
 
+const deleteProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findOneAndUpdate(
+    { productId: Number(req.params.id) },
+    { isActive: false },
+    { new: true },
+  );
+
+  if (!product) {
+    throw new ApiError(404, 'Product not found');
+  }
+
+  res.json({ success: true, message: 'Product archived', data: product });
+});
 
 module.exports = {
-    getProducts ,
-    CreateProduct
-}
+  getProducts,
+  getProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+};

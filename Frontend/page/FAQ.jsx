@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom"
 import { useState } from "react"
@@ -6,11 +6,9 @@ import { useState } from "react"
 const FAQ = () => {
   const [detailText , setDetailText] = useState("");
   const [detailText2 , setDetailText2] = useState("");
-  
   const [active, setActive] = useState("")
   return (
     <>
-    <Navbar/>
 
       <div className="map-container">
         <h2>MAP</h2>

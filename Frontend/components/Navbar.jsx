@@ -8,23 +8,9 @@ const Navbar = () => {
 const {
     cartCount,
     cartItems,
-    setCartCount,
-    setCartItems
+    removeCartItem,
+    cartError
 } = useCart();
-const removeItem = (id) => {
-
-  const itemToDelete = cartItems.find(
-    item => item.id === id
-  );
-
-  setCartItems(
-    prev => prev.filter(item => item.id !== id)
-  );
-
-  setCartCount(
-    prev => prev - itemToDelete.quantity
-  );
-};
   const [show , setShow] = useState(false);
   return (
     <>
@@ -74,10 +60,11 @@ const removeItem = (id) => {
         
       
         <p>สินค้าในตะกร้า: {cartCount}</p>
+        {cartError && <p>{cartError}</p>}
         <br />
         {cartItems.map(item => (
     <div
-        key={item.id}
+        key={item._id}
         className="cart-item"
       >
         <img
@@ -98,7 +85,7 @@ const removeItem = (id) => {
       <br />
       <div className="Option">
         <button className="btn-buy">ซื้อสินค้า</button>
-        <button className="btn-Deleatd" onClick={() => removeItem(item.id)}>ลบสินค้า</button>
+        <button className="btn-Deleatd" onClick={() => removeCartItem(item._id)}>ลบสินค้า</button>
       </div>
      
     </div>

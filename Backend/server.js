@@ -1,42 +1,29 @@
-const express =  require('express');
-const app = express();
-const cors = require('cors');
-const PORT = process.env.PORT || 3000;
-const mongoose  = require('mongoose')
-const dotenv  =  require('dotenv')
-const MOGO_URI  = process.env.MONGO_URI
-const ProductRoute   =  require('./Routes/ProductR')
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
-//  ! midle ware
+dotenv.config({ quiet: true });
 
-dotenv.config()
-app.use(express.json())
-app.use(cors())
+const app = require('./src/app');
 
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI;
 
-// ! Route 
-app.use('/Product' , ProductRoute)
+const startServer = async () => {
+  if (!MONGO_URI) {
+    throw new Error('MONGO_URI is not set. Add it to Backend/.env');
+  }
 
+  await mongoose.connect(MONGO_URI, {
+    dbName: process.env.MONGO_DB_NAME || 'Cart',
+  });
+  console.log('MongoDB connected');
 
-// ! db conection
+  app.listen(PORT, () => {
+    console.log(`API running at http://localhost:${PORT}`);
+  });
+};
 
-mongoose.connect(MOGO_URI)
-.then(()=>{
-    console.log("Database Connected")
-})
-.catch((err)=>{
-    console.log(err.message)
-})
-
-
-
-
-
-// ! Route
-app.use('/Product' , ProductRoute)
- 
-
-
-app.listen(PORT , ()=>{
-    console.log( ` Server is Runing at http://localhost:${PORT}  `  )
-})
+startServer().catch((error) => {
+  console.error(`Unable to start server: ${error.message}`);
+  process.exit(1);
+});
